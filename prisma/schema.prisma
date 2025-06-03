@@ -19,7 +19,29 @@ model User {
 
   email String @unique
 
-  password String 
+  password String
+
+  displayName String @map("display_name")
+
+  picture String?
+
+  role UserRole
+
+  createAt DateTime @default(now()) @map("created_at")
+
+  updatedAt DateTime @updatedAt @map("updated_at")
 
   @@map("users")
+}
+
+enum UserRole {
+  SUPERVISOR
+  MANAGER
+  ASSISTANT
+}
+
+model Company{
+  id String @id @default(uuid())
+
+
 }
