@@ -40,8 +40,142 @@ enum UserRole {
   ASSISTANT
 }
 
-model Company{
-  id String @id @default(uuid())
+model Company {
+  id Int @id @default(autoincrement())
 
+  companyName String @unique @map("company_name")
 
+  industry Industry @relation(fields: [industryId], references: [id])
+
+  industryId Int @map("industry_id")
+
+  vehicles Vehicle[]
+
+  employees Employee[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("companies")
+}
+
+model Industry {
+  id Int @id @default(autoincrement())
+
+  industry String @unique
+
+  companies Company[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("industries")
+}
+
+model Vehicle {
+  id Int @id @default(autoincrement())
+
+  companyId Int @map("company_id")
+
+  employeeId Int @map("employee_id") @unique 
+
+  licensePlate String @unique
+
+  modelId Int @map("model_id")
+
+  model Model @relation(fields: [modelId], references: [id])
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  company Company @relation(fields: [companyId], references: [id])
+
+  employee Employee @relation(fields: [employeeId], references: [id])
+
+  @@map("vehicles")
+}
+
+model Employee {
+  id Int @id @default(autoincrement())
+
+  companyId Int @map("company_id")
+
+  vehicle Vehicle?
+
+  expenses Expense[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  company Company @relation(fields: [companyId], references: [id])
+
+  @@map("employees")
+}
+
+model Model {
+  id Int @id @default(autoincrement())
+
+  name String
+
+  brandId Int @map("brand_id")
+
+  vehicle Vehicle[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  brand Brand @relation(fields: [brandId], references: [id])
+
+  @@map("models")
+}
+
+model Brand {
+  id Int @id @default(autoincrement())
+
+  name String @unique
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  models Model[]
+
+  @@map("brands")
+}
+
+model ExpenseCategory {
+  id Int @id @default(autoincrement())
+
+  name String @unique
+
+  expenses Expense[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("expense_categories")
+}
+
+model Expense {
+  id Int @id @default(autoincrement())
+
+  amount Float
+
+  date DateTime
+
+  employeeId Int @map("employee_id")
+
+  expense_category_id Int
+
+  expense_category ExpenseCategory @relation(fields: [expense_category_id], references: [id])
+
+  employee Employee @relation(fields: [employeeId], references: [id])
+
+  @@map("expenses")
 }

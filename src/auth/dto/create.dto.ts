@@ -1,7 +1,7 @@
-import { IsEmail, IsString, MinLength } from 'class-validator';
+import { IsEmail, IsEnum, IsString, MinLength } from 'class-validator';
 import { UserRole } from '../constants/user-role.enum';
 
-export class User {
+export class createUserDto {
   @IsString()
   @IsEmail()
   email: string;
@@ -10,12 +10,15 @@ export class User {
   @MinLength(6)
   password: string;
 
-  @MinLength(5)
   @IsString()
+  @MinLength(5)
   displayName: string;
 
   @IsString()
   picture?: string;
 
+  @IsEnum(UserRole, {
+    message: 'role должен быть одним из: SUPERVISOR, MANAGER, ASSISTANT',
+  })
   role: UserRole;
 }
