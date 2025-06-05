@@ -4,9 +4,9 @@ import {
   HttpStatus,
   Injectable,
 } from '@nestjs/common';
-import { createUserDto } from 'src/auth/dto/create.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
 import * as argon2 from 'argon2';
+import { User, UserRole } from 'generated/prisma';
 
 @Injectable()
 export class UserService {
@@ -28,16 +28,22 @@ export class UserService {
     return user;
   }
 
-  async create(registerData: createUserDto) {
+  async create(
+    email: string,
+    password: string,
+    displayName: string,
+    picture: string,
+    role: UserRole,
+  ): Promise<User> {
     try {
-      const hashedPassword = await argon2.hash(registerData.password);
+      const hashedPassword = await argon2.hash(password);
       const user = await this.prismaService.user.create({
         data: {
-          email: registerData.email,
+          email,
           password: hashedPassword,
-          displayName: registerData.displayName,
-          picture: registerData.picture,
-          role: registerData.role,
+          displayName,
+          picture,
+          role,
         },
       });
       return user;

@@ -1,24 +1,31 @@
-import { IsEmail, IsEnum, IsString, MinLength } from 'class-validator';
-import { UserRole } from '../constants/user-role.enum';
+import {
+  IsEmail,
+  IsEnum,
+  IsNotEmpty,
+  IsString,
+  MinLength,
+} from 'class-validator';
+import { UserRole } from 'generated/prisma';
 
 export class createUserDto {
   @IsString()
+  @IsNotEmpty()
   @IsEmail()
   email: string;
 
   @IsString()
-  @MinLength(6)
+  @IsNotEmpty()
+  @MinLength(8)
   password: string;
 
   @IsString()
+  @IsNotEmpty()
   @MinLength(5)
   displayName: string;
-
-  @IsString()
-  picture?: string;
 
   @IsEnum(UserRole, {
     message: 'role должен быть одним из: SUPERVISOR, MANAGER, ASSISTANT',
   })
+  @IsNotEmpty()
   role: UserRole;
 }
