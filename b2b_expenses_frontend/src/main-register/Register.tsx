@@ -1,14 +1,15 @@
-import { useState } from 'react'
+import {useState} from 'react'
 import './Register.css'
+import axios from 'axios'
 
 function Register() {
-
     const [form, setForm] = useState({
         email: "",
         password: "",
-        name: "",
+        displayName: "",
         role: ""
     })
+
 
     const saveForm = (e:  React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => {
         const {name, value} = e.target
@@ -18,17 +19,31 @@ function Register() {
         }))
     }
 
-    const printData = (e: React.FormEvent) => {
+    const sendData = async (e: React.FormEvent) => {
         e.preventDefault()
-        console.log(form)
+
+        if (!form.email || !form.password || !form.displayName || !form.role) {
+            alert('Пожалуйста, заполните все поля');
+            return;
+    }
+        try{
+            console.log('FormData:', form);
+            const response = await axios.post("http://localhost:4000/auth/register", form)
+            console.log('Успех:', response.data);
+            alert('Регистрация успешна!');
+        }catch(err){
+            console.error('Ошибка:', err);
+            alert(`${err.response.data.message}`);
+        }
+        
     }
 
     return (
        <main>
             <div className="main container center">
-                <form className="register-form" onSubmit={printData}>
+                <form className="register-form" onSubmit={sendData}>
                     <ul className='items-list'>
-                        <li className='h2 h2-padding'>Зарегистрируйте аккаунт</li>
+                        <li className='h2 h2-padding'>Регистрация аккаунта</li>
 
 
                         <li className='form-input'>
@@ -43,15 +58,15 @@ function Register() {
                             <label htmlFor="password" className='start h3'>
                                 Пароль
                             </label>
-                            <input id="password"  type="password" name='password' onChange={saveForm} value={form.password}  required />
+                            <input id="password"  type="password" minLength={8} name='password' onChange={saveForm} value={form.password}  required />
                         </li>
 
 
                         <li className='form-input'>
-                            <label htmlFor="name" className='start h3'>
+                            <label htmlFor="displayName" className='start h3'>
                                 Имя
                             </label>
-                            <input id="name" type="text" name='name' onChange={saveForm} value={form.name}  required />
+                            <input id="displayName" type="text" name='displayName' minLength={5} onChange={saveForm} value={form.displayName}  required />
                         </li>
 
 

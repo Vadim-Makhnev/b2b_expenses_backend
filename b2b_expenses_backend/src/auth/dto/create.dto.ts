@@ -15,12 +15,12 @@ export class createUserDto {
 
   @IsString()
   @IsNotEmpty()
-  @MinLength(8)
+  @MinLength(8, { message: 'Пароль должен быть больше 8 символов' })
   password: string;
 
   @IsString()
   @IsNotEmpty()
-  @MinLength(5)
+  @MinLength(5, { message: 'Имя должно быть больше 5 символов' })
   displayName: string;
 
   @IsEnum(UserRole, {

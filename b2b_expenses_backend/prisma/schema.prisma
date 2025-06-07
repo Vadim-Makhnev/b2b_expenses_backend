@@ -49,6 +49,8 @@ model Company {
 
   industryId Int @map("industry_id")
 
+  inn String @unique
+
   vehicles Vehicle[]
 
   employees Employee[]
