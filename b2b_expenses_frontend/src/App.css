@@ -1,0 +1,53 @@
+
+.container {
+    margin: 0 auto;
+    background-color: white;
+    width: 1440px;
+}
+
+.h2 {
+  font-family: "Manrope", sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  color: black;
+  font-style: normal;
+}
+
+.h3  {
+  font-family: "Manrope", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgb(0, 0, 0, 1);
+  font-style: normal;
+}
+
+.h5 {
+  font-family: "Manrope", sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  color: rgba(0, 0, 0, 0.5);
+  font-style: normal;
+}
+
+.role-select {
+  width: 100%;
+  border: 1px solid #d5d5d5;
+  box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.05);
+  padding: 8px 16px;
+  border-radius: 5px;
+}
+
+.send-btn {
+    border: 1px solid #d5d5d5;
+    box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    width: fit-content;
+    padding: 8px 30px;
+    cursor: pointer;
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

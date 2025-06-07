@@ -1,0 +1,53 @@
+*,
+html,
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  max-width: 1920px;
+  min-height: 1080px;
+  background-color: gray;
+}
+
+button {
+  border: none;
+  font-family: "Manrope", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 1);
+  font-style: normal;
+  background-color: inherit;
+}
+
+select {
+  border: none;
+  background-color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+input {
+  border: none;
+}
+
+input {
+    width: 100%;
+    padding: 8px 16px;
+    border: 1px solid #d5d5d5;
+    box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.05);
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #E5E4E2;
+}
