@@ -1,20 +1,16 @@
-
-import './Header.css'
+import './Header.css';
 
 function Header() {
-
-
   return (
     <header>
-        <div className='header container'>
-            <span className="header-logo">
-                <img src="logo.svg" alt="Logo" />
-            </span>
-            <div className="header-second">
-            </div>
-        </div>
+      <div className="header container">
+        <span className="header-logo">
+          <img src="logo.svg" alt="Logo" />
+        </span>
+        <div className="header-second"></div>
+      </div>
     </header>
-  )
+  );
 }
 
-export default Header
+export default Header;

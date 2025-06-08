@@ -1,17 +1,14 @@
-
-import './App.css'
-import Header from './header/Header'
-import Register from './main-register/Register'
+import './App.css';
+import Header from './header/Header';
+import MainPage from './MainPage/MainPage';
 
 function App() {
-
-
   return (
     <>
-    <Header />
-    <Register />
+      <Header />
+      <MainPage />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

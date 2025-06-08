@@ -1,20 +1,17 @@
-
 .container {
-    margin: 0 auto;
-    background-color: white;
-    width: 1440px;
+  margin: 0 auto;
+  background-color: var(--primary-color);
+  width: 1440px;
+  height: 100%;
 }
 
 .h2 {
-  font-family: "Manrope", sans-serif;
   font-size: 24px;
   font-weight: 500;
-  color: black;
   font-style: normal;
 }
 
-.h3  {
-  font-family: "Manrope", sans-serif;
+.h3 {
   font-size: 14px;
   font-weight: 400;
   color: rgb(0, 0, 0, 1);
@@ -22,32 +19,109 @@
 }
 
 .h5 {
-  font-family: "Manrope", sans-serif;
   font-size: 12px;
   font-weight: 300;
-  color: rgba(0, 0, 0, 0.5);
   font-style: normal;
+}
+
+.sidebar-text {
+  font-size: 16px;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.sum {
+  font-size: 20px;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.atribute {
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  color: rgba(0, 0, 0, 0.7);
 }
 
 .role-select {
   width: 100%;
-  border: 1px solid #d5d5d5;
+  border: 1px solid var(--border-color);
   box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.05);
   padding: 8px 16px;
   border-radius: 5px;
 }
 
 .send-btn {
-    border: 1px solid #d5d5d5;
-    box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.05);
-    border-radius: 10px;
-    width: fit-content;
-    padding: 8px 30px;
-    cursor: pointer;
+  border: 1px solid var(--border-color);
+  box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  width: fit-content;
+  padding: 8px 30px;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 1);
+  font-style: normal;
 }
 
 .center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.h2-padding {
+  padding: 15px 30px;
+}
+
+.field {
+  width: 100%;
+  padding: 8px 16px;
+  border: 1px solid var(--border-color);
+  box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 5px;
+}
+
+.field:focus {
+  outline: 1px solid var(--button-color);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 440px;
+  height: 500px;
+  border-radius: 10px;
+  border: 1px solid #d5d5d5;
+  box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.05);
+  padding: 20px 30px;
+}
+
+.form-input {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 3px;
+  align-items: start;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+}
+/*CSS стили для форм авторизации*/
+
+.aside {
+  width: 256px;
+  height: auto;
+}
+
+.flexible {
+  display: flex;
 }
