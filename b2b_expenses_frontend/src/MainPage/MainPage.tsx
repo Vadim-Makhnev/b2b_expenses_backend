@@ -1,11 +1,17 @@
-import Panel from '../panelPage/Panel';
+import { useOutlet } from 'react-router-dom';
 import Sidebar from '../sidebar/Sidebar';
 
 function MainPage() {
+  const outlet = useOutlet();
+
+  if (!outlet) {
+    return null;
+  }
+
   return (
-    <main className="main container flexible">
+    <main className="flexible container">
       <Sidebar />
-      <Panel />
+      <div className="content">{outlet}</div>
     </main>
   );
 }

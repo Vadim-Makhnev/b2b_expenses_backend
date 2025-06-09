@@ -1,3 +1,25 @@
 .main {
   height: 100%;
 }
+
+.form-checkbox {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.checkbox-design {
+  gap: 5px;
+  display: flex;
+}
+
+.privacy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.privacy a {
+  color: var(--button-color);
+}

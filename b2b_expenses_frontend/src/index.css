@@ -68,3 +68,9 @@ input {
 input:focus {
   outline: none;
 }
+
+label {
+  border: none;
+  text-decoration: none;
+  outline: none;
+}

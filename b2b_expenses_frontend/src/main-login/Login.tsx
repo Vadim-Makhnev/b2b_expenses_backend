@@ -30,54 +30,52 @@ function Login() {
   };
 
   return (
-    <main>
-      <div className="main container center">
-        <form onSubmit={sendData}>
-          <div className="form">
-            <ul className="items-list">
-              <li className="h2 h2-padding text-center">
-                <span>Войдите в свой аккаунт</span>
-              </li>
+    <main className="container center">
+      <form onSubmit={sendData}>
+        <div className="form fix-form">
+          <ul className="items-list">
+            <li className="h2 h2-padding text-center">
+              <span>Войдите в свой аккаунт</span>
+            </li>
 
-              <li className="form-input">
-                <label htmlFor="email" className="h3 start">
-                  Почта
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  name="email"
-                  className="field h5"
-                  onChange={saveForm}
-                  placeholder="Введите свою почту"
-                  value={form.email}
-                  required
-                />
-              </li>
+            <li className="form-input">
+              <label htmlFor="email" className="h3 start">
+                Почта
+              </label>
+              <input
+                id="email"
+                type="email"
+                name="email"
+                className="field h5"
+                onChange={saveForm}
+                placeholder="Введите свою почту"
+                value={form.email}
+                required
+              />
+            </li>
 
-              <li className="form-input">
-                <label htmlFor="password" className="h3 start">
-                  Пароль
-                </label>
-                <input
-                  id="password"
-                  type="password"
-                  name="password"
-                  className="field h5"
-                  onChange={saveForm}
-                  placeholder="Введите свой пароль"
-                  minLength={8}
-                  value={form.password}
-                  required
-                />
-              </li>
-            </ul>
-            <div className="center">
-              <button className="send-btn">Отправить</button>
-            </div>
+            <li className="form-input">
+              <label htmlFor="password" className="h3 start">
+                Пароль
+              </label>
+              <input
+                id="password"
+                type="password"
+                name="password"
+                className="field h5"
+                onChange={saveForm}
+                placeholder="Введите свой пароль"
+                minLength={8}
+                value={form.password}
+                required
+              />
+            </li>
+          </ul>
+          <div className="center">
+            <button className="send-btn">Отправить</button>
           </div>
-        </form>
-      </div>
+        </div>
+      </form>
     </main>
   );
 }

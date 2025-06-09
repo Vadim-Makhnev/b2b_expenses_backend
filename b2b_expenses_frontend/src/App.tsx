@@ -1,12 +1,32 @@
+import { Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Header from './header/Header';
 import MainPage from './MainPage/MainPage';
+import Login from './main-login/Login';
+import Register from './main-register/Register';
+import Panel from './panelPage/Panel';
+import NotFound from './NotFound/NotFound';
 
 function App() {
   return (
     <>
       <Header />
-      <MainPage />
+
+      <div className="app-container">
+        <Routes>
+          <Route path="/main/*" element={<MainPage />}>
+            <Route index element={<Panel />} />
+            <Route
+              path=":unusedPath"
+              element={<Navigate to="/not-found" replace />}
+            />
+          </Route>
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/not-found" element={<NotFound />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </div>
     </>
   );
 }
