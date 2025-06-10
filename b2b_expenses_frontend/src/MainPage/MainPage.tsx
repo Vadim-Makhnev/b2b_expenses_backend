@@ -11,7 +11,7 @@ function MainPage() {
   return (
     <main className="flexible container">
       <Sidebar />
-      <div className="content">{outlet}</div>
+      {outlet}
     </main>
   );
 }
