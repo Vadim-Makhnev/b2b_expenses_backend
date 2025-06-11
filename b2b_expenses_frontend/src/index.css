@@ -18,9 +18,11 @@ html,
 }
 
 body {
+  user-select: none;
   margin: 0 auto;
-  max-width: 1920px;
-  min-height: 1080px;
+  width: 1440px;
+  height: 1080px;
+  overflow: hidden;
   background-color: var(--primary-color);
   font-family: 'Manrope', sans-serif;
   color: var(--text-color);

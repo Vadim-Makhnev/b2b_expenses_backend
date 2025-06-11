@@ -1,49 +1,64 @@
-import { useEffect, useState } from 'react';
 import './Header.css';
 import axios from 'axios';
-
-interface UserData {
-  id: number;
-  firstName: string;
-  lastName: string;
-  image: string;
-}
+import { useNavigate } from 'react-router-dom';
+import { useUserStore } from '../store/useUserStore';
+import { useEffect } from 'react';
 
 function Header() {
-  const [user, setUser] = useState<UserData | null>(null);
+  const navigate = useNavigate();
 
-  const [error, setError] = useState<string | null>(null);
+  const { user, setUser } = useUserStore();
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get('https://dummyjson.com/users/3');
-        const user: UserData = response.data;
-        setUser(user);
-      } catch (err) {
-        setError('Не удалось загрузить данные');
-        console.error(err);
+    const loadUser = async () => {
+      if (!user) {
+        try {
+          const res = await axios.get('http://localhost:4000/users/profile');
+          setUser(res.data);
+        } catch (err) {
+          console.error(err);
+          setUser(null);
+        }
       }
     };
-    fetchData();
+
+    loadUser();
   }, []);
+
+  async function logoutHandler() {
+    try {
+      await axios.post('http://localhost:4000/auth/logout');
+      setUser(null);
+      navigate('/login');
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
   return (
     <header>
-      <div className="header container">
+      <div className="header ">
         <span className="header-logo">
           <img src="/logo.svg" alt="Logo" />
         </span>
         <div className="header-second">
-          {error ? (
-            error
+          {user ? (
+            <span className="default-font">{user?.displayName}</span>
           ) : (
-            <span className="default-font">
-              {user?.firstName}&nbsp;
-              {user?.lastName}
-            </span>
+            ''
           )}
-          {error ? '' : <img src={user?.image} alt="" height={24} width={24} />}
+          {user ? (
+            <img src={user?.picture} alt="" height={24} width={24} />
+          ) : (
+            ''
+          )}
+          {user ? (
+            <button className="h3 logout-btn" onClick={logoutHandler}>
+              Logout
+            </button>
+          ) : (
+            ''
+          )}
         </div>
       </div>
     </header>

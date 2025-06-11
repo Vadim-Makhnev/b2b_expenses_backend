@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './FileLoad.css';
+import * as React from "react";
 
 function LoadFile() {
   const [drag, setDrag] = useState(false);

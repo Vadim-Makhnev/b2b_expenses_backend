@@ -40,7 +40,7 @@ function Register() {
   };
 
   return (
-    <main className="container center">
+    <main className="center">
       <form className="form" onSubmit={sendData}>
         <ul className="items-list">
           <li className="h2 h2-padding text-center">
@@ -131,7 +131,7 @@ function Register() {
           </button>
         </div>
 
-        <div className="privacy">
+        <div className="privacy center">
           <a
             href="/privacy"
             target="_blank"

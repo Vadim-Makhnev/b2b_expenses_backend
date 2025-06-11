@@ -14,12 +14,6 @@
   display: flex;
 }
 
-.privacy {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .privacy a {
   color: var(--button-color);
 }

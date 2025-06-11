@@ -2,7 +2,7 @@ import './NotFound.css';
 
 function NotFound() {
   return (
-    <main className="container center">
+    <main className="center">
       <div className="page">404 Not Found</div>
     </main>
   );

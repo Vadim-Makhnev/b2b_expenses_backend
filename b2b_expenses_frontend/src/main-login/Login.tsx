@@ -1,7 +1,12 @@
 import { useState, type FormEvent } from 'react';
 import './Login.css';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { fetchProfile } from '../store/fetchUserProfile';
 
 function Login() {
+  const navigate = useNavigate();
+
   const [form, setForm] = useState({
     email: '',
     password: '',
@@ -20,17 +25,28 @@ function Login() {
     }));
   };
 
-  const sendData = (e: FormEvent) => {
+  const sendData = async (e: FormEvent) => {
     e.preventDefault();
     if (!form.email || !form.password) {
       alert('Пожалуйста, заполните все поля');
       return;
     }
-    console.log(form);
+    try {
+      const response = await axios.post(
+        'http://localhost:4000/auth/login',
+        form
+      );
+      const data = response.data;
+      console.log(data);
+      await fetchProfile();
+      navigate('/main/panel');
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
-    <main className="container center">
+    <main className=" center">
       <form onSubmit={sendData}>
         <div className="form fix-form">
           <ul className="items-list">

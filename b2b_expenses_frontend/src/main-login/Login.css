@@ -5,3 +5,9 @@
 .fix-form {
   height: 500px;
 }
+
+.logout-btn {
+  background-color: var(--secondary-color);
+  padding: 5px 10px;
+  border-radius: 10px;
+}

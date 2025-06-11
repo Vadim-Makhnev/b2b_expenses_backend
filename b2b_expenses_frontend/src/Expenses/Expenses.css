@@ -1,0 +1,20 @@
+.expenses-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.expenses-table th,
+.expenses-table td {
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    text-align: left;
+}
+
+.expenses-table th {
+    background-color: #f4f4f4;
+}
+
+.table-container {
+    max-height: 1020px;
+    overflow-y: auto;
+}

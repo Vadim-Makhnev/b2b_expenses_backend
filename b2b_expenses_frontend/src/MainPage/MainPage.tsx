@@ -1,15 +1,21 @@
-import { useOutlet } from 'react-router-dom';
+import { Navigate, useOutlet } from 'react-router-dom';
 import Sidebar from '../sidebar/Sidebar';
+import { useUserStore } from '../store/useUserStore';
 
 function MainPage() {
   const outlet = useOutlet();
+  const { user } = useUserStore();
+
+  if (!user || !user.role) {
+    return <Navigate to="/unauthorized" />;
+  }
 
   if (!outlet) {
     return null;
   }
 
   return (
-    <main className="flexible container">
+    <main className="flexible ">
       <Sidebar />
       {outlet}
     </main>
