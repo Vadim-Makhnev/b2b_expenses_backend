@@ -31,7 +31,7 @@ export class AuthService {
       registerData.email,
       registerData.password,
       registerData.displayName,
-      `https://api.dicebear.com/9.x/initials/svg?seed=${registerData.displayName}`,
+      `https://api.dicebear.com/9.x/initials/png?seed=${registerData.displayName}`,
       registerData.role,
     );
 
@@ -66,7 +66,7 @@ export class AuthService {
       req.session.destroy((err) => {
         if (err) {
           return reject(
-            new InternalServerErrorException('Не удвлось завершить сессию'),
+            new InternalServerErrorException('Не удалось завершить сессию'),
           );
         }
         res.clearCookie(this.configService.getOrThrow<string>('SESSION_NAME'));

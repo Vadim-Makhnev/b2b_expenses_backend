@@ -7,10 +7,6 @@ export const Authorized = createParamDecorator(
     const request = ctx.switchToHttp().getRequest() as Request;
     const user = request.user;
 
-    if (!user) {
-      throw new Error('пользователь не найден в request');
-    }
-
     return data ? user[data] : user;
   },
 );

@@ -8,8 +8,7 @@ import { UserRole } from 'generated/prisma';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Authorization(UserRole.MANAGER)
-  @HttpCode(HttpStatus.OK)
+  @Authorization()
   @Get('profile')
   @HttpCode(HttpStatus.OK)
   async findProfile(@Authorized('id') userId: string) {

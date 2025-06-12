@@ -1,26 +1,25 @@
-.load-file {
-  width: 100%;
-  height: 100%;
+.panel__load-file {
+    height: 100%;
 }
 
 .drop-area {
-  width: inherit;
-  height: inherit;
-  border: 5px dashed var(--text-color);
-  background-color: var(--secondary-color);
-  border-radius: 5px;
+    width: inherit;
+    height: inherit;
+    border: 5px dashed var(--text-color);
+    background-color: var(--secondary-color);
+    border-radius: 5px;
 }
 
 .static-area {
-  width: inherit;
-  height: inherit;
-  border: 5px dashed var(--border-color);
-  background-color: var(--secondary-color);
-  border-radius: 5px;
+    width: inherit;
+    height: inherit;
+    border: 5px dashed var(--border-color);
+    background-color: var(--secondary-color);
+    border-radius: 5px;
 }
 
 .csv-upload-label {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
 }

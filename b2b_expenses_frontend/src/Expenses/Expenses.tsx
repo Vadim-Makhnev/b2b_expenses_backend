@@ -44,10 +44,10 @@ function Expenses() {
 
 
     return (
-        <div className="panel-main">
-            <div className="top-element">
+        <div className="panel__container">
+            <div className="panel__top-element">
                 <img src="/Table.svg" alt="house" width={16} height={16}/>
-                <span className="sidebar-text">Панель иснтрументов</span>
+                <span className="sidebar-text">Расходы</span>
             </div>
             <div className="table-container">
                 <table className="expenses-table">

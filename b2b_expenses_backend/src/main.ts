@@ -5,19 +5,19 @@ import * as cookieParser from 'cookie-parser';
 import { ValidationPipe } from '@nestjs/common';
 import { RedisStore } from 'connect-redis';
 import * as session from 'express-session';
-import IORedis from 'ioredis';
 import { parse, StringValue } from './libs/common/utils/ms.utils';
 import { parseBoolean } from './libs/common/utils/parse-boolean';
+import { RedisService } from './redis/redis.service';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   const config = app.get(ConfigService);
 
-  const redisClient = new IORedis(config.getOrThrow<string>('REDIS_URI'));
+  const redisClient = app.get(RedisService);
 
   const redisStore = new RedisStore({
-    client: redisClient,
+    client: redisClient.getClient(),
     prefix: config.getOrThrow<string>('SESSION_FOLDER'),
   });
 

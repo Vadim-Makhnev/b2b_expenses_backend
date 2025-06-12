@@ -3,6 +3,7 @@ import {
   IsEnum,
   IsNotEmpty,
   IsString,
+  Matches,
   MinLength,
 } from 'class-validator';
 import { UserRole } from 'generated/prisma';
@@ -20,7 +21,9 @@ export class createUserDto {
 
   @IsString()
   @IsNotEmpty()
-  @MinLength(5, { message: 'Имя должно быть больше 5 символов' })
+  @Matches(/^[А-ЯЁ][а-яё]+\s[А-ЯЁ][а-яё]+\s[А-ЯЁ][а-яё]+$/, {
+    message: 'ФИО должно быть в формате: Иванов Иван Иванович',
+  })
   displayName: string;
 
   @IsEnum(UserRole, {
